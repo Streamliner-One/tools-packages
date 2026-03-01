@@ -1,21 +1,16 @@
 # Streamliner One Tools Packages
 
+![Org](https://img.shields.io/badge/org-Streamliner--One-181717?logo=github) ![Type](https://img.shields.io/badge/type-catalog-purple) ![Status](https://img.shields.io/badge/status-active-brightgreen)
+
 Connector catalog for Tools Config Server.
 
-## Purpose
-Stores reusable package definitions and validators for external integrations.
+## Quick Start
 
-Examples:
-- GitHub
-- Stripe
-- Notion
-- 1Password
-- Pinecone
+```bash
+# copy package folders into tools-config-server/packages/
+```
 
-## Structure
-Each package lives in its own folder and contains:
-- `package.json` (metadata + fields)
+## Package Contract
+Each package folder contains:
+- `package.json`
 - `validator.js` (optional)
-
-## Compatibility
-Packages are versioned and designed to be consumed by `tools-config-server`.
