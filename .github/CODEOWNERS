@@ -1,0 +1,6 @@
+# Default ownership
+* @prudkov
+
+# Security-sensitive files
+SECURITY.md @prudkov
+.github/* @prudkov
