@@ -1,0 +1,50 @@
+{
+  "id": "github",
+  "name": "GitHub",
+  "version": "1.0.0",
+  "description": "GitHub API access for repository management, issues, and workflows",
+  "icon": "🐙",
+  "category": "dev",
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+  "website": "https://github.com",
+  "notes": "Validation: If test fails with 'Invalid URL', verify token works with: curl -H 'Authorization: Bearer TOKEN' https://api.github.com/user",
+  
+  "fields": {
+    "token": {
+      "label": "Personal Access Token",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "ghp_...",
+      "help": "Create at https://github.com/settings/tokens"
+    },
+    "username": {
+      "label": "Username",
+      "type": "text",
+      "required": false,
+      "placeholder": "your-github-username",
+      "help": "Optional: Your GitHub username for API calls"
+    },
+    "apiVersion": {
+      "label": "API Version",
+      "type": "text",
+      "required": false,
+      "default": "2022-11-28",
+      "placeholder": "2022-11-28",
+      "help": "GitHub API version header (defaults to 2022-11-28)"
+    },
+    "scopes": {
+      "label": "Token Scopes",
+      "type": "text",
+      "required": false,
+      "placeholder": "repo, workflow, admin:org",
+      "help": "Optional: Document what scopes this token has"
+    }
+  },
+  
+  "validation": {
+    "type": "javascript",
+    "entry": "validator.js"
+  }
+}

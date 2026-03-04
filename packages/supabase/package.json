@@ -1,0 +1,60 @@
+{
+  "id": "supabase",
+  "name": "Supabase",
+  "version": "1.0.0",
+  "description": "PostgreSQL database with realtime subscriptions and auth",
+  "icon": "🟢",
+  "category": "database",
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+  "website": "https://supabase.com",
+  
+  "fields": {
+    "url": {
+      "label": "Project URL",
+      "type": "url",
+      "required": true,
+      "placeholder": "https://xxxxx.supabase.co",
+      "help": "Found in Project Settings > API"
+    },
+    "anonKey": {
+      "label": "Anon Public Key",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "help": "Client-safe key for row-level security"
+    },
+    "serviceKey": {
+      "label": "Service Role Key",
+      "type": "password",
+      "required": false,
+      "sensitive": true,
+      "help": "Admin key - bypasses RLS (keep secret!)"
+    },
+    "region": {
+      "label": "Region",
+      "type": "select",
+      "required": false,
+      "options": ["us-east-1", "us-west-2", "eu-west-1", "eu-central-1", "ap-southeast-1"],
+      "default": "us-east-1",
+      "help": "For documentation purposes"
+    }
+  },
+  
+  "validation": {
+    "type": "http",
+    "endpoint": "{{url}}/rest/v1/",
+    "method": "GET",
+    "headers": {
+      "apikey": "{{anonKey}}",
+      "Authorization": "Bearer {{anonKey}}"
+    },
+    "expectedStatus": 200,
+    "successMessage": "Connected to Supabase project",
+    "errorMessages": {
+      "401": "Invalid API key - check your Anon Key",
+      "404": "Project URL not found - verify the URL",
+      "0": "Cannot connect - check URL and network"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "resend",
+  "name": "Resend",
+  "version": "1.0.0",
+  "description": "Email API for developers - simple, reliable email sending",
+  "icon": "✉️",
+  "category": "email",
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+  "website": "https://resend.com",
+  
+  "fields": {
+    "apiKey": {
+      "label": "API Key",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "re_xxxxxxxx",
+      "help": "Get from resend.com/api-keys"
+    },
+    "fromEmail": {
+      "label": "From Email",
+      "type": "text",
+      "required": true,
+      "placeholder": "notifications@yourdomain.com",
+      "help": "Verified sender address"
+    },
+    "defaultTo": {
+      "label": "Default To (optional)",
+      "type": "text",
+      "required": false,
+      "placeholder": "admin@yourdomain.com",
+      "help": "Fallback recipient if not specified"
+    }
+  },
+  
+  "validation": {
+    "type": "http",
+    "endpoint": "https://api.resend.com/api-keys",
+    "method": "GET",
+    "headers": {
+      "Authorization": "Bearer {{apiKey}}"
+    },
+    "expectedStatus": 200,
+    "successMessage": "Connected to Resend",
+    "errorMessages": {
+      "401": "Invalid API key",
+      "403": "API key lacks required permissions"
+    }
+  }
+}

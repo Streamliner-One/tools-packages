@@ -1,0 +1,63 @@
+{
+  "id": "stripe",
+  "name": "Stripe",
+  "version": "1.0.0",
+  "description": "Payment processing and billing",
+  "icon": "💳",
+  "category": "payment",
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+  
+  "fields": {
+    "secretKey": {
+      "label": "Secret Key",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "sk_live_...",
+      "help": "Starts with sk_live_ (production) or sk_test_ (test)"
+    },
+    "publishableKey": {
+      "label": "Publishable Key",
+      "type": "text",
+      "required": false,
+      "placeholder": "pk_live_...",
+      "help": "Client-side key (optional)"
+    },
+    "webhookSecret": {
+      "label": "Webhook Secret",
+      "type": "password",
+      "required": false,
+      "sensitive": true,
+      "placeholder": "whsec_...",
+      "help": "For verifying webhook signatures"
+    },
+    "mode": {
+      "label": "Mode",
+      "type": "select",
+      "required": true,
+      "options": ["test", "live"],
+      "default": "test",
+      "help": "Test mode recommended for initial setup"
+    }
+  },
+  
+  "validation": {
+    "type": "javascript",
+    "entry": "validator.js"
+  },
+  
+  "webhooks": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "event": "invoice.paid",
+        "path": "/webhooks/stripe/invoice-paid"
+      },
+      {
+        "event": "customer.subscription.created",
+        "path": "/webhooks/stripe/subscription-created"
+      }
+    ]
+  }
+}

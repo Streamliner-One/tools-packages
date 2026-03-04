@@ -1,0 +1,67 @@
+{
+  "id": "notion-enhanced",
+  "name": "Notion (Enhanced)",
+  "version": "2.0.0",
+  "description": "Notion with unlimited custom database connections",
+  "icon": "📋",
+  "category": "productivity",
+  "author": "OpenClaw Community",
+  "minServerVersion": "0.3.0",
+  
+  "fields": {
+    "apiKey": {
+      "label": "Integration Token",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "help": "Create at notion.so/my-integrations"
+    },
+    "version": {
+      "label": "API Version",
+      "type": "select",
+      "required": true,
+      "options": ["2022-06-28", "2022-02-22"],
+      "default": "2022-06-28"
+    }
+  },
+  
+  "dynamicFields": {
+    "enabled": true,
+    "label": "Connected Databases",
+    "description": "Add your Notion databases by name and ID",
+    "addButtonText": "➕ Add Database",
+    "maxFields": 20,
+    "fieldTemplate": {
+      "nameField": {
+        "key": "db{{index}}Name",
+        "label": "Database {{index}} Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., Home, Todos, Projects"
+      },
+      "idField": {
+        "key": "db{{index}}Id",
+        "label": "Database {{index}} ID",
+        "type": "text",
+        "required": true,
+        "placeholder": "Paste URL or database ID"
+      }
+    }
+  },
+  
+  "validation": {
+    "type": "http",
+    "endpoint": "https://api.notion.com/v1/users/me",
+    "method": "GET",
+    "headers": {
+      "Authorization": "Bearer {{apiKey}}",
+      "Notion-Version": "{{version}}"
+    },
+    "expectedStatus": 200,
+    "successMessage": "Connected to Notion as {{response.name}}",
+    "errorMessages": {
+      "401": "Invalid integration token",
+      "400": "Invalid API version"
+    }
+  }
+}

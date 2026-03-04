@@ -1,0 +1,33 @@
+{
+  "id": "holidays",
+  "name": "Public Holidays",
+  "version": "1.0.0",
+  "description": "Public holidays by country via Nager.Date (no API key required)",
+  "icon": "🎉",
+  "category": "productivity",
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+  "website": "https://date.nager.at",
+  "fields": {
+    "provider": {
+      "label": "Provider",
+      "type": "text",
+      "required": true,
+      "default": "Nager.Date",
+      "placeholder": "Nager.Date",
+      "help": "Free public holidays API (no key required)"
+    },
+    "defaultCountry": {
+      "label": "Default Country Code",
+      "type": "text",
+      "required": false,
+      "default": "ES",
+      "placeholder": "ES",
+      "help": "ISO country code fallback (ES, CH, AE, etc.)"
+    }
+  },
+  "validation": {
+    "type": "javascript",
+    "entry": "validator.js"
+  }
+}

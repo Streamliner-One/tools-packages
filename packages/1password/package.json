@@ -1,0 +1,41 @@
+{
+  "id": "1password",
+  "name": "1Password",
+  "version": "1.0.0",
+  "description": "1Password service account for CLI access to vaults",
+  "icon": "🔐",
+  "category": "security",
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+  "website": "https://1password.com",
+  
+  "fields": {
+    "serviceAccountToken": {
+      "label": "Service Account Token",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "ops_...",
+      "help": "Create at https://my.1password.com/settings/security/tokens"
+    },
+    "account": {
+      "label": "Account Name",
+      "type": "text",
+      "required": false,
+      "placeholder": "prudkov",
+      "help": "Optional: Your 1Password account name (from prudkov.1password.com). Auto-detected from token if not provided."
+    },
+    "vault": {
+      "label": "Default Vault",
+      "type": "text",
+      "required": false,
+      "placeholder": "Alex-Mel",
+      "help": "Default vault to access (optional)"
+    }
+  },
+  
+  "validation": {
+    "type": "javascript",
+    "entry": "validator.js"
+  }
+}
