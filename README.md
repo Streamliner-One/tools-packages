@@ -118,33 +118,9 @@ The health dashboard calls this validator on demand and shows the result on each
 
 ---
 
-## Installing a package
+## Requesting a new integration
 
-### From this repo
-
-```bash
-# Copy the package into your server's packages directory
-cp -r stripe ~/.openclaw/workspace/tools-server/packages/
-# Restart the server — it appears automatically
-```
-
-### From the server UI
-
-Drag-and-drop package install is coming in a future release.
-
----
-
-## Contributing
-
-1. Fork this repo
-2. Create your package folder under a branch
-3. Open a PR with a short description of what the service does
-
-**Good packages have:**
-- A working validator (even a simple connectivity check)
-- A useful `example` block so users can test their key from the UI
-- Clear field labels and help text
-- Sensitive fields marked `"sensitive": true`
+Packages are maintained by [Streamliner One](https://streamliner.one). If you need a service that isn't listed, open an issue and we'll look at adding it.
 
 ---
 
