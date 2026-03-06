@@ -1,0 +1,75 @@
+{
+  "id": "obsidian-sync",
+  "name": "Obsidian Sync",
+  "version": "1.0.0",
+  "description": "Obsidian Sync — keeps a local vault copy in sync for agent read/write access",
+  "icon": "💎",
+  "category": "knowledge",
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+
+  "fields": {
+    "accountEmail": {
+      "label": "Account email",
+      "type": "text",
+      "required": true,
+      "placeholder": "you@example.com",
+      "help": "Obsidian account email used for Sync login."
+    },
+    "accountPassword": {
+      "label": "Account password",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "help": "Stored securely in the tools vault. Used to auto-login; OTP still manual when 2FA is enabled."
+    },
+    "vaultPath": {
+      "label": "Local vault path",
+      "type": "text",
+      "required": false,
+      "placeholder": "(leave blank to auto-manage on server)",
+      "help": "Optional. If blank, the server will auto-create and manage a safe vault directory. If set, must be within the allowed vault base dir."
+    },
+    "remoteVault": {
+      "label": "Remote vault (name or id)",
+      "type": "text",
+      "required": false,
+      "placeholder": "My Diary",
+      "help": "Optional. Used for setup hints and clearer validation messages."
+    },
+    "e2ePassword": {
+      "label": "E2E encryption password",
+      "type": "password",
+      "required": false,
+      "sensitive": true,
+      "help": "Only needed if the remote vault is end-to-end encrypted."
+    },
+    "deviceName": {
+      "label": "Device name",
+      "type": "text",
+      "required": false,
+      "default": "tools-server",
+      "help": "Shows up in Obsidian Sync version history."
+    },
+    "configDir": {
+      "label": "Config dir name",
+      "type": "text",
+      "required": false,
+      "default": ".obsidian",
+      "help": "Obsidian config folder inside the vault (default: .obsidian)."
+    }
+  },
+
+  "skill": {
+    "useWhen": "obsidian notes, vault search, synced notes, markdown notes, personal knowledge base, obsidian vault",
+    "intents": ["note_sync", "knowledge_base", "vault_search"],
+    "params": ["query or note path", "vault name (optional)"],
+    "fallback": "none",
+    "note": "Keeps a local vault copy in sync for agent read/write access."
+  },
+
+  "validation": {
+    "type": "javascript",
+    "entry": "validator.js"
+  }
+}

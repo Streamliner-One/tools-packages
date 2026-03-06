@@ -1,0 +1,42 @@
+{
+  "id": "readwise",
+  "name": "Readwise",
+  "version": "1.0.0",
+  "description": "Readwise highlights + Reader API",
+  "icon": "📚",
+  "category": "knowledge",
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+
+  "fields": {
+    "apiToken": {
+      "label": "Access Token",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "rw_...",
+      "help": "Create/retrieve at https://readwise.io/access_token"
+    },
+    "baseUrl": {
+      "label": "Base URL",
+      "type": "url",
+      "required": false,
+      "default": "https://readwise.io",
+      "placeholder": "https://readwise.io",
+      "help": "Default is Readwise cloud. Change only for testing."
+    }
+  },
+
+  "skill": {
+    "useWhen": "readwise highlights, saved articles, reading list, book notes, Reader inbox, annotation search",
+    "intents": ["highlights_search", "reading_list", "knowledge_base"],
+    "params": ["query or tag", "category (books/articles/tweets)", "date range (optional)"],
+    "fallback": "web_search",
+    "note": "Connects to Readwise highlights + Reader API for saved content retrieval."
+  },
+
+  "validation": {
+    "type": "javascript",
+    "entry": "validator.js"
+  }
+}
