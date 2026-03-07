@@ -127,7 +127,7 @@ Packages are maintained by [Streamliner One](https://streamliner.one). If you ne
 ## Related
 
 - [tools-config-server](https://github.com/Streamliner-One/tools-config-server) — the server that loads these packages
-- [install](https://github.com/Streamliner-One/install) — one-line installer: `curl https://install.streamliner.one | bash`
+- [install](https://github.com/Streamliner-One/tools) — one-line installer: `curl https://tools.streamliner.one | bash`
 - [streamliner.one](https://streamliner.one) — Streamliner One
 
 ---
