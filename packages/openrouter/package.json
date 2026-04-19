@@ -1,0 +1,74 @@
+{
+  "id": "openrouter",
+  "name": "OpenRouter",
+  "version": "1.0.0",
+  "description": "Unified AI model gateway — 200+ models from OpenAI, Anthropic, Google, Qwen, Meta, Mistral and more via one OpenAI-compatible API",
+  "icon": "🔀",
+  "category": "ai",
+  "labels": ["ai", "llm", "model-gateway", "multi-model", "openai-compatible"],
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+  "website": "https://openrouter.ai",
+
+  "skill": {
+    "useWhen": "openrouter, route to model, try qwen, use qwen, qwen3, alibaba model, try a different model, switch model, use openrouter model, via openrouter, meta llama, mistral via openrouter, deepseek via openrouter, openrouter fallback",
+    "params": ["model", "prompt"],
+    "fallback": "openai"
+  },
+
+  "fields": {
+    "apiKey": {
+      "label": "API Key",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "sk-or-v1-...",
+      "help": "Get from openrouter.ai/keys"
+    },
+    "defaultModel": {
+      "label": "Default Model",
+      "type": "text",
+      "required": false,
+      "placeholder": "qwen/qwen3.5-plus",
+      "help": "Optional: default model to use (e.g. qwen/qwen3.5-plus, anthropic/claude-sonnet-4-5, meta-llama/llama-3.3-70b-instruct)"
+    },
+    "siteUrl": {
+      "label": "Site URL (optional)",
+      "type": "text",
+      "required": false,
+      "placeholder": "https://streamliner.one",
+      "help": "Shown in OpenRouter usage dashboard for attribution"
+    },
+    "siteName": {
+      "label": "Site Name (optional)",
+      "type": "text",
+      "required": false,
+      "placeholder": "Mel / OpenClaw",
+      "help": "Shown in OpenRouter usage dashboard for attribution"
+    }
+  },
+
+  "validation": {
+    "type": "http",
+    "endpoint": "https://openrouter.ai/api/v1/auth/key",
+    "method": "GET",
+    "headers": {
+      "Authorization": "Bearer {{apiKey}}"
+    },
+    "expectedStatus": 200,
+    "successMessage": "Connected to OpenRouter ✓",
+    "errorMessages": {
+      "401": "Invalid API key — check openrouter.ai/keys",
+      "403": "Key lacks required permissions",
+      "429": "Rate limited — try again in a moment"
+    }
+  },
+
+  "usage": {
+    "title": "OpenRouter — unified model gateway",
+    "summary": "OpenAI-compatible endpoint. Base URL: https://openrouter.ai/api/v1",
+    "curl": "curl -s -X POST \"https://openrouter.ai/api/v1/chat/completions\" -H \"Authorization: Bearer {{apiKey}}\" -H \"Content-Type: application/json\" -d '{\"model\":\"qwen/qwen3.5-plus\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}'",
+    "params": ["model (string, required)", "messages (array, required)"],
+    "commonError": "401 invalid key; 402 insufficient credits — top up at openrouter.ai/credits"
+  }
+}

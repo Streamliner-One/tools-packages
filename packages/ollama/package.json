@@ -1,0 +1,64 @@
+{
+  "id": "ollama",
+  "name": "Ollama Cloud",
+  "version": "1.1.0",
+  "description": "Ollama Cloud — OpenAI-compatible inference API for cloud models (GLM-5.1, Kimi K2.5, Qwen3, Gemma4, etc.)",
+  "icon": "🦙",
+  "category": "ai",
+  "labels": ["ai", "llm", "cloud-inference", "openai-compatible", "glm", "qwen"],
+  "author": "Streamliner One",
+  "minServerVersion": "0.2.0",
+  "website": "https://ollama.com",
+
+  "skill": {
+    "useWhen": "ollama cloud, use ollama, run glm, glm-5.1, ollama model, ollama inference, run cloud model via ollama, ollama api",
+    "params": ["model", "prompt", "messages"],
+    "fallback": "openrouter",
+    "note": "Base URL: https://ollama.com/v1 (NOT api.ollama.com — that 301s). Auth: Bearer API key. No :cloud suffix on model names (e.g. glm-5.1, not glm-5.1:cloud). Pro plan ($20/mo) required for cloud inference."
+  },
+
+  "fields": {
+    "apiKey": {
+      "label": "API Key",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "ollama_...",
+      "help": "Create at ollama.com/settings/keys"
+    },
+    "defaultModel": {
+      "label": "Default Cloud Model",
+      "type": "text",
+      "required": false,
+      "placeholder": "glm-5.1",
+      "help": "Cloud model to use by default. No :cloud suffix needed."
+    }
+  },
+
+  "validation": {
+    "type": "http",
+    "endpoint": "https://ollama.com/v1/chat/completions",
+    "method": "POST",
+    "headers": {
+      "Authorization": "Bearer {{apiKey}}",
+      "Content-Type": "application/json"
+    },
+    "body": "{\"model\":\"glm-5.1\",\"messages\":[{\"role\":\"user\",\"content\":\"Hi\"}],\"max_tokens\":5,\"stream\":false}",
+    "expectedStatus": 200,
+    "successMessage": "Connected to Ollama Cloud — GLM-5.1 responding ✓",
+    "errorMessages": {
+      "301": "Wrong base URL — should be ollama.com/v1 not api.ollama.com",
+      "401": "Invalid API key — check ollama.com/settings/keys",
+      "403": "Key lacks permissions or Pro plan not active",
+      "429": "Rate limited — session limit reached (resets every 5h)"
+    }
+  },
+
+  "usage": {
+    "title": "Ollama Cloud — chat completion",
+    "summary": "OpenAI-compatible endpoint at https://ollama.com/v1. Auth: Bearer API key. No :cloud suffix on model names.",
+    "curl": "curl -s -X POST \"https://ollama.com/v1/chat/completions\" -H \"Authorization: Bearer {{apiKey}}\" -H \"Content-Type: application/json\" -d '{\"model\":\"glm-5.1\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}],\"stream\":false}'",
+    "params": ["model (string, required — e.g. glm-5.1, kimi-k2.5, qwen3)", "messages (array, required)", "stream (bool, default false)"],
+    "commonError": "301 if using api.ollama.com — correct base is ollama.com/v1; 401 invalid key; 429 session limit (resets every 5h)"
+  }
+}

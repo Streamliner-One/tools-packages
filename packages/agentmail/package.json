@@ -1,0 +1,36 @@
+{
+  "id": "agentmail",
+  "name": "AgentMail",
+  "version": "1.0.0",
+  "description": "API-native email inbox for agents — send, receive, thread, webhook, semantic search",
+  "icon": "📬",
+  "category": "communication",
+  "author": "Streamliner One",
+  "labels": ["email", "inbox", "agent", "webhook", "messaging", "travel", "notifications"],
+
+  "dataPolicy": {
+    "allowedInputs": ["client_pii", "business_internal", "dates", "queries"],
+    "blockedInputs": ["credentials"],
+    "requiresConfirmation": true,
+    "auditLevel": "standard"
+  },
+
+  "skill": {
+    "useWhen": "check agentmail, mel.miles inbox, agentmail inbox, list emails, read agent email, send from mel.miles, send agent email, agentmail message, new email received, agent inbox",
+    "intents": ["email_receive", "email_send", "inbox_check", "travel_confirmation"],
+    "params": ["inboxId (mel.miles@agentmail.to)", "messageId", "threadId", "subject", "body", "to"],
+    "fallback": "google-workspace",
+    "note": "Auth: Authorization: Bearer <apiKey>. Inboxes: mel.miles@agentmail.to (Mel Miles), streamliner@agentmail.to (Streamliner One). Webhook registered at https://mel.xtn.app/plugins/webhooks/agentmail for message.received events. Webhook secret stored in 1Password (AgentMail API item, webhook_secret field)."
+  },
+
+  "fields": {
+    "apiKey": {
+      "label": "API Key",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "am_us_xxxx",
+      "help": "Get your key at https://console.agentmail.to"
+    }
+  }
+}
