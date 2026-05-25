@@ -1,0 +1,56 @@
+{
+  "id": "duffel",
+  "name": "Duffel",
+  "version": "1.0.0",
+  "description": "Flight search and booking. Use sandbox for smoke tests; live mode creates real PNRs and charges Duffel Balance.",
+  "icon": "🎫",
+  "category": "travel",
+  "author": "Streamliner One",
+  "labels": ["travel", "flight", "booking", "airfare"],
+  "dataPolicy": {
+    "allowedInputs": ["dates", "location", "public_info", "traveler_names_after_confirmation"],
+    "blockedInputs": ["passport_data", "credentials"],
+    "requiresConfirmation": true,
+    "auditLevel": "standard"
+  },
+  "skill": {
+    "useWhen": "flight search, find flights, book flight, rates for route, search flights, airfare, flight price lookup",
+    "intents": ["flight_price_lookup", "flight_search", "airfare_lookup", "travel_booking"],
+    "params": ["origin (IATA)", "destination (IATA)", "departureDate (YYYY-MM-DD)", "returnDate (optional)", "cabinClass", "adults"],
+    "fallback": "amadeus",
+    "note": "Read travel/duffel/HANDBOOK.md before flight search, fare display, booking, or offer-detail requests. Search/show are safe. create-order and cancel-confirm require explicit human approval. Use sandbox for smoke tests."
+  },
+  "fields": {
+    "apiKey": {
+      "label": "API Key",
+      "type": "password",
+      "required": true,
+      "sensitive": true,
+      "placeholder": "duffel_test_... or duffel_live_..."
+    },
+    "environment": {
+      "label": "Environment",
+      "type": "select",
+      "required": true,
+      "options": ["sandbox", "live"],
+      "default": "sandbox"
+    }
+  },
+  "example": {
+    "title": "Create offer request (search only)",
+    "method": "POST",
+    "url": "https://api.duffel.com/air/offer_requests",
+    "headers": {
+      "Authorization": "Bearer {{apiKey}}",
+      "Duffel-Version": "v2",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data": {
+        "slices": [{"origin": "GVA", "destination": "BCN", "departure_date": "2026-07-15"}],
+        "passengers": [{"type": "adult"}],
+        "cabin_class": "economy"
+      }
+    }
+  }
+}

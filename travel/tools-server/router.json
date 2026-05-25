@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "Intent -> ordered candidate tools/packages"
+  },
+  "routes": {
+    "hotel_search": ["amadeus", "duffel", "goplaces", "brave"],
+    "flight_search": ["amadeus", "duffel", "brave"],
+    "flight_status": ["aviationstack", "amadeus", "brave"],
+    "weather": ["weather", "brave"],
+    "place_lookup": ["goplaces", "brave"],
+    "news": ["newsapi", "perplexity", "brave"],
+    "currency": ["openexchangerates", "perplexity", "brave"],
+    "task_management": ["todoist", "notion", "notion-enhanced"],
+    "calendar": ["google-workspace"],
+    "email": ["google-workspace"],
+    "email_receive": ["agentmail"],
+    "email_send": ["agentmail"],
+    "inbox_check": ["agentmail"],
+    "driving_time": ["osrm"],
+    "route_calculation": ["osrm"],
+    "voice_tts": ["elevenlabs", "vapi"],
+    "transcription": ["whisper"],
+    "web_search": ["tavily", "brave"],
+    "web_research": ["perplexity", "tavily", "brave"],
+    "web_crawl": ["tavily"],
+    "vector_search": ["pinecone"],
+    "image_generation": ["nanoBanana"],
+    "image_edit": ["nanoBanana"],
+    "sleep_data": ["oura"],
+    "health_metrics": ["oura"],
+    "readiness_check": ["oura"],
+    "automation": ["n8n"],
+    "package_tracking": ["17track"],
+    "highlights_search": ["readwise", "brave"],
+    "reading_list": ["readwise", "brave"],
+    "knowledge_base": ["obsidian-sync", "readwise", "notion", "brave"],
+    "note_sync": ["obsidian-sync"],
+    "vault_search": ["obsidian-sync", "brave"],
+    "default": ["brave"]
+  },
+  "failurePolicy": {
+    "auth_or_config_error": "fallback_immediately",
+    "rate_limit_or_timeout": "retry_then_fallback",
+    "not_found_or_empty": "fallback_next_candidate"
+  }
+}

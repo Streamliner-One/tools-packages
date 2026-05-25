@@ -13,6 +13,8 @@ Each package adds a new service to your credential dashboard — with field defi
 | Package | Category | Description |
 |---------|----------|-------------|
 | `1password` | Security | Service account for CLI access to 1Password vaults |
+| `amadeus` | Travel | Flight and hotel search via Amadeus Self-Service APIs |
+| `duffel` | Travel | Flight search and booking via Duffel, with sandbox-first smoke tests |
 | `github` | Dev | GitHub API — repos, issues, PRs, workflows |
 | `holidays` | Data | Public holiday calendar by country (Nager.Date, no API key) |
 | `notion-enhanced` | Productivity | Notion with unlimited custom database connections |

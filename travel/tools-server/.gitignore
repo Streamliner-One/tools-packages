@@ -1,0 +1,6 @@
+node_modules/
+tools-registry.json
+.health-cache.json
+server.log
+*.log
+.certs/

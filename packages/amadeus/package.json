@@ -1,0 +1,51 @@
+{
+  "id": "amadeus",
+  "name": "Amadeus",
+  "version": "1.0.0",
+  "description": "Flight and hotel search via Amadeus Self-Service APIs. OAuth client-credentials auth.",
+  "icon": "✈️",
+  "category": "travel",
+  "author": "Streamliner One",
+  "labels": ["travel", "flight", "hotel", "booking"],
+  "dataPolicy": {
+    "allowedInputs": ["dates", "location", "public_info"],
+    "blockedInputs": ["passport_data", "credentials"],
+    "requiresConfirmation": false,
+    "auditLevel": "standard"
+  },
+  "skill": {
+    "useWhen": "flight tickets, hotel availability, hotel prices, find hotels, find flights, airfare, round trip, one way",
+    "intents": ["flight_search", "airfare_lookup", "lodging_search", "hotel_search", "travel_booking", "price_check"],
+    "params": ["origin + destination (flights) or cityCode/geocode/hotelIds (hotels)", "departureDate or checkIn (YYYY-MM-DD)", "checkOut (YYYY-MM-DD)", "adults"],
+    "fallback": "web_search",
+    "note": "Hotels use two-step flow: find hotel IDs by geocode/city, then call hotel-offers. Do not use deprecated /by-keyword flow. See travel/amadeus/AMADEUS_HOTELS.md."
+  },
+  "fields": {
+    "clientId": {
+      "label": "Client ID",
+      "type": "text",
+      "required": true,
+      "sensitive": false
+    },
+    "clientSecret": {
+      "label": "Client Secret",
+      "type": "password",
+      "required": true,
+      "sensitive": true
+    },
+    "environment": {
+      "label": "Environment",
+      "type": "select",
+      "required": true,
+      "options": ["production", "test"],
+      "default": "production"
+    }
+  },
+  "example": {
+    "title": "OAuth token",
+    "method": "POST",
+    "url": "https://api.amadeus.com/v1/security/oauth2/token",
+    "headers": { "Content-Type": "application/x-www-form-urlencoded" },
+    "body": "grant_type=client_credentials&client_id={{clientId}}&client_secret={{clientSecret}}"
+  }
+}

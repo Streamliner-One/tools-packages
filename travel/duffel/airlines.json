@@ -1,0 +1,207 @@
+{
+  "airlines": {
+    "LH": {
+      "name": "Lufthansa",
+      "type": "legacy"
+    },
+    "AF": {
+      "name": "Air France",
+      "type": "legacy"
+    },
+    "LX": {
+      "name": "SWISS",
+      "type": "legacy"
+    },
+    "BA": {
+      "name": "British Airways",
+      "type": "legacy"
+    },
+    "KL": {
+      "name": "KLM",
+      "type": "legacy"
+    },
+    "IB": {
+      "name": "Iberia",
+      "type": "legacy"
+    },
+    "AZ": {
+      "name": "ITA Airways",
+      "type": "legacy"
+    },
+    "OS": {
+      "name": "Austrian Airlines",
+      "type": "legacy"
+    },
+    "SN": {
+      "name": "Brussels Airlines",
+      "type": "legacy"
+    },
+    "TP": {
+      "name": "TAP Air Portugal",
+      "type": "legacy"
+    },
+    "SK": {
+      "name": "SAS",
+      "type": "legacy"
+    },
+    "AY": {
+      "name": "Finnair",
+      "type": "legacy"
+    },
+    "DL": {
+      "name": "Delta Air Lines",
+      "type": "legacy"
+    },
+    "UA": {
+      "name": "United Airlines",
+      "type": "legacy"
+    },
+    "AA": {
+      "name": "American Airlines",
+      "type": "legacy"
+    },
+    "EK": {
+      "name": "Emirates",
+      "type": "legacy"
+    },
+    "QR": {
+      "name": "Qatar Airways",
+      "type": "legacy"
+    },
+    "EY": {
+      "name": "Etihad Airways",
+      "type": "legacy"
+    },
+    "TK": {
+      "name": "Turkish Airlines",
+      "type": "legacy"
+    },
+    "AC": {
+      "name": "Air Canada",
+      "type": "legacy"
+    },
+    "EI": {
+      "name": "Aer Lingus",
+      "type": "legacy"
+    },
+    "LO": {
+      "name": "LOT Polish Airlines",
+      "type": "legacy"
+    },
+    "VS": {
+      "name": "Virgin Atlantic",
+      "type": "legacy"
+    },
+    "SU": {
+      "name": "Aeroflot",
+      "type": "legacy"
+    },
+    "OK": {
+      "name": "Czech Airlines",
+      "type": "legacy"
+    },
+    "TO": {
+      "name": "Transavia France",
+      "type": "lcc"
+    },
+    "HV": {
+      "name": "Transavia",
+      "type": "lcc"
+    },
+    "FR": {
+      "name": "Ryanair",
+      "type": "lcc"
+    },
+    "U2": {
+      "name": "easyJet",
+      "type": "lcc"
+    },
+    "VY": {
+      "name": "Vueling",
+      "type": "lcc"
+    },
+    "W6": {
+      "name": "Wizz Air",
+      "type": "lcc"
+    },
+    "NK": {
+      "name": "Spirit Airlines",
+      "type": "lcc"
+    },
+    "F9": {
+      "name": "Frontier Airlines",
+      "type": "lcc"
+    },
+    "WN": {
+      "name": "Southwest Airlines",
+      "type": "lcc"
+    },
+    "V7": {
+      "name": "Volotea",
+      "type": "lcc"
+    },
+    "I2": {
+      "name": "Iberia Express",
+      "type": "lcc"
+    },
+    "EW": {
+      "name": "Eurowings",
+      "type": "lcc"
+    },
+    "4U": {
+      "name": "Germanwings",
+      "type": "lcc"
+    },
+    "DE": {
+      "name": "Condor",
+      "type": "lcc"
+    },
+    "X3": {
+      "name": "TUI fly",
+      "type": "lcc"
+    },
+    "PC": {
+      "name": "Pegasus Airlines",
+      "type": "lcc"
+    },
+    "UX": {
+      "name": "Air Europa",
+      "type": "hybrid"
+    },
+    "A3": {
+      "name": "Aegean Airlines",
+      "type": "hybrid"
+    },
+    "DY": {
+      "name": "Norwegian",
+      "type": "hybrid"
+    },
+    "EN": {
+      "name": "Air Dolomiti",
+      "type": "hybrid"
+    },
+    "NT": {
+      "name": "Binter Canarias",
+      "type": "hybrid"
+    },
+    "YW": {
+      "name": "Air Nostrum",
+      "type": "hybrid"
+    }
+  },
+  "learned": {
+    "AT": {
+      "name": "Royal Air Maroc",
+      "type": "hybrid",
+      "first_seen": "2026-04-02T23:08:01.395774",
+      "source": "duffel_offer"
+    },
+    "JU": {
+      "name": "Air Serbia",
+      "type": "hybrid",
+      "first_seen": "2026-04-03T14:52:05.364469",
+      "source": "duffel_offer"
+    }
+  },
+  "last_updated": "2026-04-03T14:52:05.364772"
+}
